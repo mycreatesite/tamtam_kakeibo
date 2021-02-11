@@ -26,21 +26,21 @@
             <v-date-picker
               v-model="yearMonth"
               type="month"
-              color="green"
+              color="yellow lighten-1 grey--text text--darken-4"
               locale="ja-jp"
               no-title
               scrollable
             >
               <v-spacer/>
               <v-btn text color="grey" @click="menu = false">キャンセル</v-btn>
-              <v-btn text color="primary" @click="onSelectMonth">選択</v-btn>
+              <v-btn text color="grey--text text--darken-4" @click="onSelectMonth">選択</v-btn>
             </v-date-picker>
           </v-menu>
         </v-col>
         <v-spacer/>
         <!-- 追加ボタン -->
         <v-col class="text-right" cols="4">
-          <v-btn dark color="green" @click="onClickAdd">
+          <v-btn color="yellow lighten-1 grey--text text--darken-4" @click="onClickAdd">
             <v-icon>mdi-plus</v-icon>
           </v-btn>
         </v-col>
@@ -69,11 +69,11 @@
         mobile-breakpoint="0"
       >
         <!-- 日付列 -->
-        <template v-slot:item.date="{ item }">
+        <template v-slot:[`item.date`]="{ item }">
           {{ parseInt(item.date.slice(-2)) + '日' }}
         </template>
         <!-- タグ列 -->
-        <template v-slot:item.tags="{ item }">
+        <template v-slot:[`item.tags`]="{ item }">
           <div v-if="item.tags">
             <v-chip
               class="mr-2"
@@ -85,15 +85,15 @@
           </div>
         </template>
         <!-- 収入列 -->
-        <template v-slot:item.income="{ item }">
+        <template v-slot:[`item.income`]="{ item }">
           {{ separate(item.income) }}
         </template>
         <!-- タグ列 -->
-        <template v-slot:item.outgo="{ item }">
+        <template v-slot:[`item.outgo`]="{ item }">
           {{ separate(item.outgo) }}
         </template>
         <!-- 操作列 -->
-        <template v-slot:item.actions="{ item }">
+        <template v-slot:[`item.actions`]="{ item }">
           <v-icon class="mr-2" @click="onClickEdit(item)">mdi-pencil</v-icon>
           <v-icon @click="onClickDelete(item)">mdi-delete</v-icon>
         </template>

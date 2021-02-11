@@ -1,0 +1,5 @@
+@use './variables.scss' as val;
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+.v-application .v-application--wrap {
+    font-family: val.$body-font-family;
+}
