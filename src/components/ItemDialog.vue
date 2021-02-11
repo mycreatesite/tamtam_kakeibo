@@ -84,6 +84,7 @@
             v-model.number="amount"
             prefix="￥"
             pattern="[0-9]*"
+            type="number"
             :rules="amountRules"
           />
           <!-- メモ -->

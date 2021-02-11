@@ -81,7 +81,10 @@ export default {
         }
     }
     .v-main {
-      padding-top: 160px !important;
+      padding-top: 200px !important;
+      .container--fluid {
+        max-width: 1024px;
+      }
     }
   }
 </style>
