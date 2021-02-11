@@ -1,4 +1,4 @@
-# tamtam_kakeibo
+# gas-account-book
 
 ## Project setup
 ```
