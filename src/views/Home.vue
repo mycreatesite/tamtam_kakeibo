@@ -2,58 +2,59 @@
   <div>
     <v-card>
       <v-card-title>
-        <!-- 月選択 -->
-        <v-col cols="8">
-          <v-menu 
-            ref="menu"
-            v-model="menu"
-            :close-on-content-click="false"
-            :return-value.sync="yearMonth"
-            transition="scale-transition"
-            offset-y
-            max-width="290px"
-            min-width="290px"
-          >
-            <template v-slot:activator="{ on }">
-              <v-text-field
-                v-model="yearMonth"
-                prepend-icon="mdi-calendar"
-                readonly
-                v-on="on"
-                hide-details
-              />
-            </template>
-            <v-date-picker
-              v-model="yearMonth"
-              type="month"
-              color="yellow lighten-1 grey--text text--darken-4"
-              locale="ja-jp"
-              no-title
-              scrollable
-            >
-              <v-spacer/>
-              <v-btn text color="grey" @click="menu = false">キャンセル</v-btn>
-              <v-btn text color="grey--text text--darken-4" @click="onSelectMonth">選択</v-btn>
-            </v-date-picker>
-          </v-menu>
-        </v-col>
-        <v-spacer/>
         <!-- 追加ボタン -->
-        <v-col class="text-right" cols="4">
+        <v-col class="text-right" cols="12">
           <v-btn color="yellow lighten-1 grey--text text--darken-4" @click="onClickAdd">
             <v-icon>mdi-plus</v-icon>
           </v-btn>
         </v-col>
-        <!-- 検索フォーム -->
-        <v-col cols="12">
-          <v-text-field
-            v-model="search"
-            append-icon="mdi-magnify"
-            label="Search"
-            single-line
-            hide-details
-          />
-        </v-col>
+        <!-- 月選択 -->
+        <v-row justify="center">
+          <v-col cols="12" md="6">
+            <v-menu 
+              ref="menu"
+              v-model="menu"
+              :close-on-content-click="false"
+              :return-value.sync="yearMonth"
+              transition="scale-transition"
+              offset-y
+              max-width="290px"
+              min-width="290px"
+            >
+              <template v-slot:activator="{ on }">
+                <v-text-field
+                  v-model="yearMonth"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-on="on"
+                  hide-details
+                />
+              </template>
+              <v-date-picker
+                v-model="yearMonth"
+                type="month"
+                color="yellow lighten-1 grey--text text--darken-4"
+                locale="ja-jp"
+                no-title
+                scrollable
+              >
+                <v-spacer/>
+                <v-btn text color="grey" @click="menu = false">キャンセル</v-btn>
+                <v-btn text color="grey--text text--darken-4" @click="onSelectMonth">選択</v-btn>
+              </v-date-picker>
+            </v-menu>
+          </v-col>
+          <!-- 検索フォーム -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="search"
+              append-icon="mdi-magnify"
+              label="Search"
+              single-line
+              hide-details
+            />
+          </v-col>
+        </v-row>
       </v-card-title>
       <!-- テーブル -->
       <v-data-table
@@ -67,6 +68,7 @@
         :sort-desc="true"
         :items-per-page="30"
         mobile-breakpoint="0"
+        loading-text="しばしまて"
       >
         <!-- 日付列 -->
         <template v-slot:[`item.date`]="{ item }">
@@ -88,7 +90,7 @@
         <template v-slot:[`item.income`]="{ item }">
           {{ separate(item.income) }}
         </template>
-        <!-- タグ列 -->
+        <!-- 支出列 -->
         <template v-slot:[`item.outgo`]="{ item }">
           {{ separate(item.outgo) }}
         </template>
@@ -215,3 +217,23 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  #app {
+    .v-data-table {
+      tr {
+        height: 5rem;
+      }
+    }
+    .v-data-footer {
+      padding: .5rem 0;
+    }
+    .v-card {
+      border-radius: 2rem;
+      box-shadow:
+        10px 10px 30px rgba(#000,.06),
+        -5px -5px 15px #fff,
+    }
+  }
+
+</style>
