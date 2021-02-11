@@ -28,9 +28,9 @@ const state = {
     appName: 'たむたむかけいぼ',
     apiUrl: '',
     authToken: '',
-    strIncomeItems: '給料, ボーナス, 繰越',
-    strOutgoItems: '食費, 趣味, 交通費, 買い物, 交際費, 生活費, 住宅, 通信, 車, 税金',
-    strTagItems: '固定費, カード'
+    strIncomeItems: '給料, ボーナス',
+    strOutgoItems: 'ごはん,おもちゃ,住まい,病院',
+    strTagItems: 'アマゾン,楽天,その他'
   }
 }
 
