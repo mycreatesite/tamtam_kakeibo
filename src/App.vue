@@ -6,15 +6,16 @@
       <v-toolbar-title>
         <img class="_logo" src="./assets/img/logo.svg" :alt="appName">
       </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <!-- テーブルアイコンのボタン -->
-      <v-btn icon to="/" color="grey darken-4">
-        <v-icon>mdi-file-table-outline</v-icon>
-      </v-btn>
-      <!-- 歯車アイコンのボタン -->
-      <v-btn icon to="/settings" color="grey darken-4">
-        <v-icon>mdi-cog</v-icon>
-      </v-btn>
+      <div class="nav-icons">
+        <!-- テーブルアイコンのボタン -->
+        <v-btn icon to="/" color="grey darken-4">
+          <v-icon>mdi-file-table-outline</v-icon>
+        </v-btn>
+        <!-- 歯車アイコンのボタン -->
+        <v-btn icon to="/settings" color="grey darken-4">
+          <v-icon>mdi-cog</v-icon>
+        </v-btn>
+      </div>
     </v-app-bar>
     <!-- メインコンテンツ -->
     <v-main>
@@ -67,6 +68,16 @@ export default {
         box-shadow: none;
         .v-toolbar__content {
           height: auto !important;
+          position: relative;
+          @include mq(){
+            justify-content: center;
+          }
+          .nav-icons {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+          }
         }
         .v-toolbar__title {
             padding-top: 2rem;
@@ -75,8 +86,11 @@ export default {
             align-items: center;
             img {
               width: auto;
-              height: 64px;
+              height: 48px;
               margin-right: 1rem;
+              @include mq(){
+                height: 64px;
+              }
             }
         }
     }

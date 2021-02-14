@@ -2,3 +2,15 @@ $body-font-family: 'Kosugi Maru', sans-serif;
 
 $primary: #ffee58;
 $text-color: #212121;
+
+$breakpoints: (
+  'md': 'screen and (min-width: 600px)',
+  'lg': 'screen and (min-width: 1025px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+@mixin mq($breakpoint: md) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
